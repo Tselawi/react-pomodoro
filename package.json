@@ -1,0 +1,55 @@
+{
+  "name": "react-pomodoro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel src/build index.html",
+    "lint": "npx eslint --fix --cache src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tselawi/react-pomodoro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tselawi/react-pomodoro/issues"
+  },
+  "homepage": "https://github.com/Tselawi/react-pomodoro#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/preset-react": "^7.13.13",
+    "@becode/eslint-config": "^0.12.1",
+    "eslint": "^7.25.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-unicorn": "^31.0.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.2.1"
+  },
+  "lint-staged": {
+    "*.json": [
+      "npx prettier --write"
+    ],
+    "*.js": [
+      "npx eslint --fix --cache"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "dependencies": {
+    "app.css": "^0.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style.css": "^1.0.0"
+  }
+}

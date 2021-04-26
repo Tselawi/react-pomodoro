@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap");
+* {
+    /* padding: 0;
+    margin: 0; */
+    font-family: "Original Surfer", cursive;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+h2 {
+    font-size: 3rem;
+    font-weight: 400;
+}
+h4 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-top: 0;
+}
+.interval-container {
+    display: flex;
+    margin: 0 50px;
+}
+
+.interval-main-container {
+    display: flex;
+}
+
+button {
+    padding: 5px 12px;
+    margin: 0 10px;
+    height: 30px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+}
+button:disabled {
+    cursor: not-allowed;
+}
+
+.interval-time {
+    font-size: 1.3rem;
+    margin: 0 10px;
+}
+
+.timer-container {
+    border: 2px solid cornflowerblue;
+    margin-top: 40px;
+    border-radius: 100px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.timer {
+    font-size: 2rem;
+}
+.timer-action {
+    margin-top: 20px;
+    text-align: center;
+}
