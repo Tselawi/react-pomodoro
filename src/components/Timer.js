@@ -1,97 +1,26 @@
 import React from "react";
 
-class Timer extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            isWork: true,
-            timerSecond: 0,
-            intervalId: 0,
-        };
-        this.playTimer = this.playTimer.bind(this);
-        this.decreaseTimer = this.decreaseTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
-        this.resetTimer = this.resetTimer.bind(this);
-    }
-
-    playTimer() {
-        let intervalId = setInterval(this.decreaseTimer, 1000);
-        this.props.onPlayStopTimer(true);
-        this.setState({
-            intervalId: intervalId,
-        });
-    }
-
-    decreaseTimer() {
-        switch (this.state.timerSecond) {
-            case 0:
-                if (this.props.timerMinute === 0) {
-                    if (this.state.isWork) {
-                        this.setState({
-                            isWork: false,
-                        });
-                        this.props.toggleInterval(this.state.isWork);
-                    } else {
-                        this.setState({
-                            isWork: true,
-                        });
-                        this.props.toggleInterval(this.state.isWork);
-                    }
-                } else {
-                    this.props.updateTimerMinute();
-                    this.setState({
-                        timerSecond: 59,
-                    });
-                }
-                break;
-            default:
-                this.setState((prevState) => {
-                    return {
-                        timerSecond: prevState.timerSecond - 1,
-                    };
-                });
-                break;
+const Timer = (props) => {
+    function formatTime(time) {
+        let minutes = Math.floor(time / 60);
+        if (minutes < 10) {
+            minutes = "0" + minutes;
         }
+        let seconds = Math.floor(time - minutes * 60);
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        return `${minutes}:${seconds}`;
     }
-
-    stopTimer() {
-        clearInterval(this.state.intervalId);
-        this.props.onPlayStopTimer(false);
-    }
-
-    resetTimer() {
-        this.stopTimer();
-        this.props.resetTimer();
-        this.props.onPlayStopTimer(false);
-        this.setState({
-            timerSecond: 0,
-            isWork: true,
-        });
-    }
-
-    render() {
-        return (
-            <section>
-                <section className="timer-container">
-                    <h4>{this.state.isWork === true ? "Work" : "Break"}</h4>
-                    <span className="timer">{this.props.timerMinute}</span>
-                    <span className="timer">:</span>
-                    <span className="timer">
-                        {this.state.timerSecond === 0
-                            ? "00"
-                            : this.state.timerSecond < 10
-                            ? "0" + this.state.timerSecond
-                            : this.state.timerSecond}
-                    </span>
-                </section>
-                <section className="timer-action">
-                    <button onClick={this.playTimer}>Play</button>
-                    <button onClick={this.stopTimer}>Stop</button>
-                    <button onClick={this.resetTimer}>Reset</button>
-                </section>
-            </section>
-        );
-    }
-}
-
+    return (
+        <div className="wrapper">
+            <div className="counter">
+                <span className="counterType" id="timer-label">
+                    {props.mode}
+                </span>
+                <span id="time-left">{formatTime(props.time.currentTime)}</span>
+            </div>
+        </div>
+    );
+};
 export default Timer;

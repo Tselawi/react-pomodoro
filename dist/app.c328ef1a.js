@@ -29638,93 +29638,58 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/work-control.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/TimeContext.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.TimeContext = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
-var workInterval = function workInterval(props) {
-  function increaseCounter() {
-    if (props.workInterval == 60) {
-      return;
-    }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-    props.increaseWork();
-  }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-  function decreaseCounter() {
-    if (props.workInterval === 1) {
-      return;
-    }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-    props.decreaseWork();
-  }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-  return /*#__PURE__*/_react.default.createElement("section", null, /*#__PURE__*/_react.default.createElement("h4", null, "Work Time"), /*#__PURE__*/_react.default.createElement("section", {
-    className: "interval-container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    disabled: props.isPlay === true ? "disabled" : "",
-    onClick: increaseCounter
-  }, "+"), /*#__PURE__*/_react.default.createElement("p", {
-    className: "interval-time"
-  }, props.workInterval), /*#__PURE__*/_react.default.createElement("button", {
-    disabled: props.isPlay === true ? "disabled" : "",
-    onClick: decreaseCounter
-  }, "-")));
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var TimeContext = /*#__PURE__*/(0, _react.createContext)();
+exports.TimeContext = TimeContext;
+
+var TimeProvider = function TimeProvider(props) {
+  var _useState = (0, _react.useState)({
+    work: 1500,
+    break: 300,
+    mode: "work",
+    time: {
+      currentTime: 1500,
+      startingTime: 1500
+    },
+    active: false,
+    name: "Pomodoro Timer",
+    progress: 0
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      timer = _useState2[0],
+      setTimer = _useState2[1];
+
+  return /*#__PURE__*/_react.default.createElement(TimeContext.Provider, {
+    value: [timer, setTimer]
+  }, props.children);
 };
 
-var _default = workInterval;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/break-control.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var breakInterval = function breakInterval(props) {
-  function increaseCounter() {
-    if (props.breakInterval === 60) {
-      return;
-    }
-
-    props.increaseBreak();
-  }
-
-  function decreaseCounter() {
-    if (props.breakInterval === 1) {
-      return;
-    }
-
-    props.decreaseBreak();
-  }
-
-  return /*#__PURE__*/_react.default.createElement("section", null, /*#__PURE__*/_react.default.createElement("h4", null, "Break Time"), /*#__PURE__*/_react.default.createElement("section", {
-    className: "interval-container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    disabled: props.isPlay === true ? "disabled" : "",
-    onClick: increaseCounter
-  }, "+"), /*#__PURE__*/_react.default.createElement("p", {
-    className: "interval-time"
-  }, props.breakInterval), /*#__PURE__*/_react.default.createElement("button", {
-    disabled: props.isPlay === true ? "disabled" : "",
-    onClick: decreaseCounter
-  }, "-")));
-};
-
-var _default = breakInterval;
+var _default = TimeProvider;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"components/Timer.js":[function(require,module,exports) {
 "use strict";
@@ -29738,141 +29703,265 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var Timer = function Timer(props) {
+  function formatTime(time) {
+    var minutes = Math.floor(time / 60);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+    var seconds = Math.floor(time - minutes * 60);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var Timer = /*#__PURE__*/function (_React$Component) {
-  _inherits(Timer, _React$Component);
-
-  var _super = _createSuper(Timer);
-
-  function Timer() {
-    var _this;
-
-    _classCallCheck(this, Timer);
-
-    _this = _super.call(this);
-    _this.state = {
-      isWork: true,
-      timerSecond: 0,
-      intervalId: 0
-    };
-    _this.playTimer = _this.playTimer.bind(_assertThisInitialized(_this));
-    _this.decreaseTimer = _this.decreaseTimer.bind(_assertThisInitialized(_this));
-    _this.stopTimer = _this.stopTimer.bind(_assertThisInitialized(_this));
-    _this.resetTimer = _this.resetTimer.bind(_assertThisInitialized(_this));
-    return _this;
+    return "".concat(minutes, ":").concat(seconds);
   }
 
-  _createClass(Timer, [{
-    key: "playTimer",
-    value: function playTimer() {
-      var intervalId = setInterval(this.decreaseTimer, 1000);
-      this.props.onPlayStopTimer(true);
-      this.setState({
-        intervalId: intervalId
-      });
-    }
-  }, {
-    key: "decreaseTimer",
-    value: function decreaseTimer() {
-      switch (this.state.timerSecond) {
-        case 0:
-          if (this.props.timerMinute === 0) {
-            if (this.state.isWork) {
-              this.setState({
-                isWork: false
-              });
-              this.props.toggleInterval(this.state.isWork);
-            } else {
-              this.setState({
-                isWork: true
-              });
-              this.props.toggleInterval(this.state.isWork);
-            }
-          } else {
-            this.props.updateTimerMinute();
-            this.setState({
-              timerSecond: 59
-            });
-          }
-
-          break;
-
-        default:
-          this.setState(function (prevState) {
-            return {
-              timerSecond: prevState.timerSecond - 1
-            };
-          });
-          break;
-      }
-    }
-  }, {
-    key: "stopTimer",
-    value: function stopTimer() {
-      clearInterval(this.state.intervalId);
-      this.props.onPlayStopTimer(false);
-    }
-  }, {
-    key: "resetTimer",
-    value: function resetTimer() {
-      this.stopTimer();
-      this.props.resetTimer();
-      this.props.onPlayStopTimer(false);
-      this.setState({
-        timerSecond: 0,
-        isWork: true
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/_react.default.createElement("section", null, /*#__PURE__*/_react.default.createElement("section", {
-        className: "timer-container"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, this.state.isWork === true ? "Work" : "Break"), /*#__PURE__*/_react.default.createElement("span", {
-        className: "timer"
-      }, this.props.timerMinute), /*#__PURE__*/_react.default.createElement("span", {
-        className: "timer"
-      }, ":"), /*#__PURE__*/_react.default.createElement("span", {
-        className: "timer"
-      }, this.state.timerSecond === 0 ? "00" : this.state.timerSecond < 10 ? "0" + this.state.timerSecond : this.state.timerSecond)), /*#__PURE__*/_react.default.createElement("section", {
-        className: "timer-action"
-      }, /*#__PURE__*/_react.default.createElement("button", {
-        onClick: this.playTimer
-      }, "Play"), /*#__PURE__*/_react.default.createElement("button", {
-        onClick: this.stopTimer
-      }, "Stop"), /*#__PURE__*/_react.default.createElement("button", {
-        onClick: this.resetTimer
-      }, "Reset")));
-    }
-  }]);
-
-  return Timer;
-}(_react.default.Component);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "wrapper"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "counter"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "counterType",
+    id: "timer-label"
+  }, props.mode), /*#__PURE__*/_react.default.createElement("span", {
+    id: "time-left"
+  }, formatTime(props.time.currentTime))));
+};
 
 var _default = Timer;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/main-screen.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/button.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Button;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Button(props) {
+  return /*#__PURE__*/_react.default.createElement("button", {
+    id: props.buttonId,
+    className: "Button",
+    onClick: function onClick() {
+      return props.actionClick(props.type);
+    }
+  }, props.children);
+}
+},{"react":"../node_modules/react/index.js"}],"components/buttoncontroller.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _button = _interopRequireDefault(require("./button"));
+
+var _TimeContext = require("./TimeContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var ButtonController = function ButtonController(props) {
+  var _useContext = (0, _react.useContext)(_TimeContext.TimeContext),
+      _useContext2 = _slicedToArray(_useContext, 2),
+      timer = _useContext2[0],
+      setTimer = _useContext2[1];
+
+  var resetTime = function resetTime() {
+    console.log(timer);
+    setTimer(_objectSpread(_objectSpread({}, timer), {}, {
+      work: 1500,
+      break: 300,
+      mode: "work",
+      time: {
+        currentTime: 1500,
+        startingTime: 1500
+      },
+      active: false,
+      name: "Pomodoro Timer",
+      progress: 0
+    }));
+    props.myRef.current.pause();
+    props.myRef.current.currentTime = 0;
+  };
+
+  var setActive = function setActive() {
+    setTimer(_objectSpread(_objectSpread({}, timer), {}, {
+      active: !timer.active
+    }));
+  };
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "ButtonController"
+  }, /*#__PURE__*/_react.default.createElement(_button.default, {
+    buttonId: "reset",
+    type: "reset",
+    actionClick: function actionClick() {
+      return resetTime();
+    }
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-undo-alt"
+  })), /*#__PURE__*/_react.default.createElement(_button.default, {
+    buttonId: "start_stop",
+    type: "play",
+    actionClick: function actionClick() {
+      return setActive();
+    }
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas ".concat(timer.active ? "fa-pause" : "fa-play")
+  })));
+};
+
+var _default = ButtonController;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./button":"components/button.js","./TimeContext":"components/TimeContext.js"}],"components/timecontroller.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _button = _interopRequireDefault(require("./button"));
+
+var _TimeContext = require("./TimeContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var TimeController = function TimeController(props) {
+  var _useContext = (0, _react.useContext)(_TimeContext.TimeContext),
+      _useContext2 = _slicedToArray(_useContext, 2),
+      timer = _useContext2[0],
+      setTimer = _useContext2[1]; // update session time / break time on click
+
+
+  var changeTimer = function changeTimer(operator) {
+    var mode = timer.mode;
+    console.log(mode);
+
+    if (timer.mode === props.type) {
+      console.log("same mode");
+
+      if (operator === "decrement" && timer[props.type] > 60) {
+        var _objectSpread2;
+
+        //if the current mode && the type are equal change the currentTime & startingTime
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, (_objectSpread2 = {}, _defineProperty(_objectSpread2, props.type, timer[props.type] - 60), _defineProperty(_objectSpread2, "time", {
+          currentTime: timer[timer.mode] - 60,
+          startingTime: timer[timer.mode] - 60
+        }), _objectSpread2)));
+      }
+
+      if (operator === "increment" && timer[props.type] < 3600) {
+        var _objectSpread3;
+
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, props.type, timer[props.type] + 60), _defineProperty(_objectSpread3, "time", {
+          currentTime: timer[timer.mode] + 60,
+          startingTime: timer[timer.mode] + 60
+        }), _objectSpread3)));
+      }
+    } else {
+      var time = timer.time;
+
+      if (operator === "decrement" && timer[props.type] > 60) {
+        var _objectSpread4;
+
+        //if the current mode && the type are equal change the currentTime & startingTime
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, (_objectSpread4 = {}, _defineProperty(_objectSpread4, props.type, timer[props.type] - 60), _defineProperty(_objectSpread4, "time", time), _objectSpread4)));
+      }
+
+      if (operator === "increment" && timer[props.type] < 3600) {
+        var _objectSpread5;
+
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, (_objectSpread5 = {}, _defineProperty(_objectSpread5, props.type, timer[props.type] + 60), _defineProperty(_objectSpread5, "time", time), _objectSpread5)));
+      }
+    }
+  };
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "TimeController"
+  }, /*#__PURE__*/_react.default.createElement(_button.default, {
+    actionClick: function actionClick() {
+      return changeTimer("decrement");
+    },
+    className: "controlButton",
+    buttonId: "".concat(props.type, "-decrement")
+  }, "-"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "wrapperDisplay"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    id: props.labelId,
+    className: "label"
+  }, props.label), /*#__PURE__*/_react.default.createElement("span", {
+    id: props.lengthId,
+    className: "time"
+  }, timer[props.type] / 60)), /*#__PURE__*/_react.default.createElement(_button.default, {
+    actionClick: function actionClick() {
+      return changeTimer("increment");
+    },
+    className: "controlButton",
+    buttonId: "".concat(props.type, "-increment")
+  }, "+"));
+};
+
+var _default = TimeController;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./button":"components/button.js","./TimeContext":"components/TimeContext.js"}],"components/title.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29882,174 +29971,171 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _workControl = _interopRequireDefault(require("./work-control"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _breakControl = _interopRequireDefault(require("./break-control"));
+var Title = function Title(props) {
+  return /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "title"
+  }, props.title));
+};
+
+var _default = Title;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/pomodoro.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _Timer = _interopRequireDefault(require("./Timer"));
 
+var _buttoncontroller = _interopRequireDefault(require("./buttoncontroller"));
+
+var _timecontroller = _interopRequireDefault(require("./timecontroller"));
+
+var _title = _interopRequireDefault(require("./title"));
+
+var _TimeContext = require("./TimeContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var Main = /*#__PURE__*/function (_React$Component) {
-  _inherits(Main, _React$Component);
+var Pomodoro = function Pomodoro() {
+  var _useContext = (0, _react.useContext)(_TimeContext.TimeContext),
+      _useContext2 = _slicedToArray(_useContext, 2),
+      timer = _useContext2[0],
+      setTimer = _useContext2[1]; // create ref for the audio
 
-  var _super = _createSuper(Main);
 
-  function Main() {
-    var _this;
+  var beep = (0, _react.useRef)();
+  (0, _react.useEffect)(function () {
+    if (timer.active && timer.time.currentTime > 0) {
+      var interval = setInterval(function () {
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, {
+          time: {
+            startingTime: timer.time.startingTime,
+            currentTime: timer.time.currentTime - 1
+          }
+        }));
+      }, 1000);
+      return function () {
+        return clearInterval(interval);
+      };
+    } else if (timer.time.currentTime === 0) {
+      beep.current.play();
+      beep.current.currentTime = 0; //    setTimeout(() => {
 
-    _classCallCheck(this, Main);
-
-    _this = _super.call(this);
-    _this.state = {
-      breakTime: 5,
-      workTime: 25,
-      timerMinute: 25,
-      isPlay: false
-    };
-    _this.onIncreaseBreakTime = _this.onIncreaseBreakTime.bind(_assertThisInitialized(_this));
-    _this.onDecreaseBreakTime = _this.onDecreaseBreakTime.bind(_assertThisInitialized(_this));
-    _this.onIncreaseWorkTime = _this.onIncreaseWorkTime.bind(_assertThisInitialized(_this));
-    _this.onDecreaseWorkTime = _this.onDecreaseWorkTime.bind(_assertThisInitialized(_this));
-    _this.onUpdateTimerMinute = _this.onUpdateTimerMinute.bind(_assertThisInitialized(_this));
-    _this.onToggleInterval = _this.onToggleInterval.bind(_assertThisInitialized(_this));
-    _this.onResetTimer = _this.onResetTimer.bind(_assertThisInitialized(_this));
-    _this.onPlayStopTimer = _this.onPlayStopTimer.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Main, [{
-    key: "onIncreaseBreakTime",
-    value: function onIncreaseBreakTime() {
-      this.setState(function (prevState) {
-        return {
-          breakTime: prevState.breakTime + 1
-        };
-      });
-    }
-  }, {
-    key: "onDecreaseBreakTime",
-    value: function onDecreaseBreakTime() {
-      this.setState(function (prevState) {
-        return {
-          breakTime: prevState.breakTime - 1
-        };
-      });
-    }
-  }, {
-    key: "onIncreaseWorkTime",
-    value: function onIncreaseWorkTime() {
-      this.setState(function (prevState) {
-        return {
-          workTime: prevState.workTime + 1,
-          timerMinute: prevState.timerMinute + 1
-        };
-      });
-    }
-  }, {
-    key: "onDecreaseWorkTime",
-    value: function onDecreaseWorkTime() {
-      this.setState(function (prevState) {
-        return {
-          workTime: prevState.workTime - 1,
-          timerMinute: prevState.timerMinute - 1
-        };
-      });
-    }
-  }, {
-    key: "onUpdateTimerMinute",
-    value: function onUpdateTimerMinute() {
-      this.setState(function (prevState) {
-        return {
-          timerMinute: prevState.timerMinute - 1
-        };
-      });
-    }
-  }, {
-    key: "onToggleInterval",
-    value: function onToggleInterval(isWork) {
-      if (isWork) {
-        this.setState({
-          timerMinute: this.state.workTime
-        });
-      } else {
-        this.setState({
-          timerMinute: this.state.breakTime
-        });
+      if (timer.mode === "work") {
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, {
+          time: {
+            currentTime: timer.break,
+            startingTime: timer.break
+          },
+          mode: "break"
+        }));
       }
-    }
-  }, {
-    key: "onResetTimer",
-    value: function onResetTimer() {
-      this.setState({
-        timerMinute: this.state.workTime
-      });
-    }
-  }, {
-    key: "onPlayStopTimer",
-    value: function onPlayStopTimer(isPlay) {
-      this.setState({
-        isPlay: isPlay
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/_react.default.createElement("main", {
-        className: "main-screen"
-      }, /*#__PURE__*/_react.default.createElement("h2", {
-        className: "title"
-      }, "Pomodoro Clock"), /*#__PURE__*/_react.default.createElement("section", {
-        className: "interval-main-container"
-      }, /*#__PURE__*/_react.default.createElement(_workControl.default, {
-        isPlay: this.state.isPlay,
-        workInterval: this.state.workTime,
-        increaseWork: this.onIncreaseWorkTime,
-        decreaseWork: this.onDecreaseWorkTime
-      }), /*#__PURE__*/_react.default.createElement(_breakControl.default, {
-        isPlay: this.state.isPlay,
-        breakInterval: this.state.breakTime,
-        increaseBreak: this.onIncreaseBreakTime,
-        decreaseBreak: this.onDecreaseBreakTime
-      })), /*#__PURE__*/_react.default.createElement(_Timer.default, {
-        timerMinute: this.state.timerMinute,
-        breakTime: this.state.breakTime,
-        updateTimerMinute: this.onUpdateTimerMinute,
-        toggleInterval: this.onToggleInterval,
-        resetTimer: this.onResetTimer,
-        onPlayStopTimer: this.onPlayStopTimer
-      }));
-    }
-  }]);
 
-  return Main;
-}(_react.default.Component);
+      if (timer.mode === "break") {
+        setTimer(_objectSpread(_objectSpread({}, timer), {}, {
+          time: {
+            currentTime: timer.work,
+            startingTime: timer.work
+          },
+          mode: "work",
+          progress: timer.progress + 1
+        }));
+      } //    }, 2500);
+
+    }
+  }, [setTimer, timer]);
+  (0, _react.useEffect)(function () {
+    if (timer.playPause) {
+      beep.current.pause();
+      beep.current.currentTime = 0;
+    }
+  });
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "pomodoro"
+  }, /*#__PURE__*/_react.default.createElement(_title.default, {
+    title: timer.name
+  }), /*#__PURE__*/_react.default.createElement(_Timer.default, {
+    time: timer.time,
+    mode: timer.mode
+  }), /*#__PURE__*/_react.default.createElement(_timecontroller.default, {
+    durationId: timer.work,
+    type: "work",
+    label: "work",
+    lengthId: "work-length",
+    labelId: "work-label"
+  }), /*#__PURE__*/_react.default.createElement(_timecontroller.default, {
+    durationId: timer.break,
+    type: "break",
+    label: "Break",
+    lengthId: "break-length",
+    labelId: "break-label"
+  }), /*#__PURE__*/_react.default.createElement(_buttoncontroller.default, {
+    playing: timer.active,
+    myRef: beep
+  }), /*#__PURE__*/_react.default.createElement("audio", {
+    id: "beep",
+    preload: "auto",
+    src: "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
+    ref: beep
+  }));
+};
+
+var _default = Pomodoro;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Timer":"components/Timer.js","./buttoncontroller":"components/buttoncontroller.js","./timecontroller":"components/timecontroller.js","./title":"components/title.js","./TimeContext":"components/TimeContext.js"}],"components/main-screen.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _TimeContext = _interopRequireDefault(require("./TimeContext"));
+
+var _pomodoro = _interopRequireDefault(require("./pomodoro"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Main = function Main() {
+  return /*#__PURE__*/_react.default.createElement("main", null, /*#__PURE__*/_react.default.createElement(_TimeContext.default, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "app"
+  }, /*#__PURE__*/_react.default.createElement(_pomodoro.default, null))));
+};
 
 var _default = Main;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./work-control":"components/work-control.js","./break-control":"components/break-control.js","./Timer":"components/Timer.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./TimeContext":"components/TimeContext.js","./pomodoro":"components/pomodoro.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30091,7 +30177,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54033" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51379" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
