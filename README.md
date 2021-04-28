@@ -22,4 +22,4 @@
 - You will use the BeCode Presets. When your project's package.json file is created, execute the following command: `npx @becode/eslint-config --with-script --with-hook`
 
 ### publishing in Netlify & github-pages.
-- Pomodoro-project: pomodoro-reactjs-tariq.netlify.app
+- [Pomodoro-project:](pomodoro-reactjs-tariq.netlify.app)
