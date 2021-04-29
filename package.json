@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "deploy": "npm run build&&gh-pages -d build",
+    "deploy": "npm run build && gh-pages -d dist",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "lint": "npx eslint --fix --cache src"
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Tselawi/react-pomodoro/issues"
   },
-  "homepage": "https://Tselawi/github.io/react-pomodoro/app.js",
+  "homepage": "https://Tselawi/github.io/react-pomodoro/src/app.js",
   "devDependencies": {
     "@babel/core": "^7.13.16",
     "@babel/eslint-parser": "^7.13.14",
