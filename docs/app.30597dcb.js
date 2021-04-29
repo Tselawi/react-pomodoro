@@ -59,7 +59,7 @@ parcelRequire = (function (e, r, t, n) {
     return f;
 })(
     {
-        J4Nk: [
+        YOwE: [
             function (require, module, exports) {
                 "use strict";
                 var r = Object.getOwnPropertySymbols,
@@ -127,7 +127,7 @@ parcelRequire = (function (e, r, t, n) {
             },
             {},
         ],
-        awqi: [
+        pyFg: [
             function (require, module, exports) {
                 "use strict";
                 var e = require("object-assign"),
@@ -549,16 +549,16 @@ parcelRequire = (function (e, r, t, n) {
                     }),
                     (exports.version = "17.0.2");
             },
-            {"object-assign": "J4Nk"},
+            {"object-assign": "YOwE"},
         ],
-        n8MK: [
+        HdMw: [
             function (require, module, exports) {
                 "use strict";
-                module.exports = require("./cjs/react.production.min.js.js");
+                module.exports = require("./cjs/react.production.min.js");
             },
-            {"./cjs/react.production.min.js": "awqi"},
+            {"./cjs/react.production.min.js": "pyFg"},
         ],
-        IvPb: [
+        x9cO: [
             function (require, module, exports) {
                 "use strict";
                 var e, t, n, r;
@@ -885,14 +885,14 @@ parcelRequire = (function (e, r, t, n) {
             },
             {},
         ],
-        MDSO: [
+        IGIl: [
             function (require, module, exports) {
                 "use strict";
-                module.exports = require("./cjs/scheduler.production.min.js.js");
+                module.exports = require("./cjs/scheduler.production.min.js");
             },
-            {"./cjs/scheduler.production.min.js": "IvPb"},
+            {"./cjs/scheduler.production.min.js": "x9cO"},
         ],
-        i17t: [
+        jF7N: [
             function (require, module, exports) {
                 "use strict";
                 var e = require("react"),
@@ -9486,9 +9486,9 @@ parcelRequire = (function (e, r, t, n) {
                     }),
                     (exports.version = "17.0.2");
             },
-            {react: "n8MK", "object-assign": "J4Nk", scheduler: "MDSO"},
+            {react: "HdMw", "object-assign": "YOwE", scheduler: "IGIl"},
         ],
-        NKHc: [
+        X9zx: [
             function (require, module, exports) {
                 "use strict";
                 function _() {
@@ -9506,12 +9506,12 @@ parcelRequire = (function (e, r, t, n) {
                     }
                 }
                 _(),
-                    (module.exports = require("./cjs/react-dom.production.min.js.js"));
+                    (module.exports = require("./cjs/react-dom.production.min.js"));
             },
-            {"./cjs/react-dom.production.min.js": "i17t"},
+            {"./cjs/react-dom.production.min.js": "jF7N"},
         ],
-        pKEH: [function (require, module, exports) {}, {}],
-        KY8r: [
+        WjnD: [function (require, module, exports) {}, {}],
+        XYR3: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -9645,9 +9645,9 @@ parcelRequire = (function (e, r, t, n) {
                     s = f;
                 exports.default = s;
             },
-            {react: "n8MK"},
+            {react: "HdMw"},
         ],
-        dMu2: [
+        v9gZ: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -9690,9 +9690,9 @@ parcelRequire = (function (e, r, t, n) {
                     a = r;
                 exports.default = a;
             },
-            {react: "n8MK"},
+            {react: "HdMw"},
         ],
-        gy5R: [
+        ZGhj: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -9715,9 +9715,9 @@ parcelRequire = (function (e, r, t, n) {
                     );
                 }
             },
-            {react: "n8MK"},
+            {react: "HdMw"},
         ],
-        pAfD: [
+        A7Jh: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -9939,9 +9939,9 @@ parcelRequire = (function (e, r, t, n) {
                     m = d;
                 exports.default = m;
             },
-            {react: "n8MK", "./button": "gy5R", "./TimeContext": "KY8r"},
+            {react: "HdMw", "./button": "ZGhj", "./TimeContext": "XYR3"},
         ],
-        Kl3e: [
+        dlBO: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -10226,9 +10226,9 @@ parcelRequire = (function (e, r, t, n) {
                     b = d;
                 exports.default = b;
             },
-            {react: "n8MK", "./button": "gy5R", "./TimeContext": "KY8r"},
+            {react: "HdMw", "./button": "ZGhj", "./TimeContext": "XYR3"},
         ],
-        PZtG: [
+        cOBr: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -10251,9 +10251,9 @@ parcelRequire = (function (e, r, t, n) {
                     l = r;
                 exports.default = l;
             },
-            {react: "n8MK"},
+            {react: "HdMw"},
         ],
-        xnRR: [
+        RfkW: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -10534,15 +10534,15 @@ parcelRequire = (function (e, r, t, n) {
                 exports.default = O;
             },
             {
-                react: "n8MK",
-                "./Timer": "dMu2",
-                "./buttoncontroller": "pAfD",
-                "./timecontroller": "Kl3e",
-                "./title": "PZtG",
-                "./TimeContext": "KY8r",
+                react: "HdMw",
+                "./Timer": "v9gZ",
+                "./buttoncontroller": "A7Jh",
+                "./timecontroller": "dlBO",
+                "./title": "cOBr",
+                "./TimeContext": "XYR3",
             },
         ],
-        TY0i: [
+        G7mq: [
             function (require, module, exports) {
                 "use strict";
                 Object.defineProperty(exports, "__esModule", {value: !0}),
@@ -10571,9 +10571,9 @@ parcelRequire = (function (e, r, t, n) {
                     a = u;
                 exports.default = a;
             },
-            {react: "n8MK", "./TimeContext": "KY8r", "./pomodoro": "xnRR"},
+            {react: "HdMw", "./TimeContext": "XYR3", "./pomodoro": "RfkW"},
         ],
-        A2T1: [
+        vZyd: [
             function (require, module, exports) {
                 "use strict";
                 var e = u(require("react")),
@@ -10589,15 +10589,15 @@ parcelRequire = (function (e, r, t, n) {
                 );
             },
             {
-                react: "n8MK",
-                "react-dom": "NKHc",
-                "./app.css": "pKEH",
-                "./components/main-screen": "TY0i",
+                react: "HdMw",
+                "react-dom": "X9zx",
+                "./app.css": "WjnD",
+                "./components/main-screen": "G7mq",
             },
         ],
     },
     {},
-    ["A2T1"],
+    ["vZyd"],
     null,
 );
-//# sourceMappingURL=/app.2ba7a307.js.map
+//# sourceMappingURL=/app.30597dcb.js.map./cjs/react.production.min.js.js.js.js./cjs/scheduler.production.min.js.js.js.js./cjs/react-dom.production.min.js.js.js.js
