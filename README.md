@@ -23,3 +23,4 @@
 
 ### publishing in Netlify & github-pages.
 - [Pomodoro-netlify.app](https://pomodoro-reactjs-tariq.netlify.app)
+- [Pomodoro-github-pages](https://tselawi.github.io/react-pomodoro/)
