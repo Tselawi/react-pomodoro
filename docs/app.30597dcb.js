@@ -554,7 +554,7 @@ parcelRequire = (function (e, r, t, n) {
         HdMw: [
             function (require, module, exports) {
                 "use strict";
-                module.exports = require("./cjs/react.production.min.js");
+                module.exports = require("./cjs/react.production.min.js.js");
             },
             {"./cjs/react.production.min.js": "pyFg"},
         ],
@@ -888,7 +888,7 @@ parcelRequire = (function (e, r, t, n) {
         IGIl: [
             function (require, module, exports) {
                 "use strict";
-                module.exports = require("./cjs/scheduler.production.min.js");
+                module.exports = require("./cjs/scheduler.production.min.js.js");
             },
             {"./cjs/scheduler.production.min.js": "x9cO"},
         ],
@@ -9506,7 +9506,7 @@ parcelRequire = (function (e, r, t, n) {
                     }
                 }
                 _(),
-                    (module.exports = require("./cjs/react-dom.production.min.js"));
+                    (module.exports = require("./cjs/react-dom.production.min.js.js"));
             },
             {"./cjs/react-dom.production.min.js": "jF7N"},
         ],
@@ -10600,4 +10600,4 @@ parcelRequire = (function (e, r, t, n) {
     ["vZyd"],
     null,
 );
-//# sourceMappingURL=/app.30597dcb.js.map./cjs/react.production.min.js.js.js.js./cjs/scheduler.production.min.js.js.js.js./cjs/react-dom.production.min.js.js.js.js
+//# sourceMappingURL=/app.30597dcb.js.map
